@@ -25,6 +25,14 @@ All pre-trained SSL checkpoints are archived on **Zenodo** (DOI: 10.5281/zenodo.
 
 See **[docs/CHECKPOINTS.md](docs/CHECKPOINTS.md)** for details and download instructions.
 
+### Dataset
+
+A subset of the training data used for this work is publicly available:
+
+**Thomas, L.-F., Änäkkälä, M. & Lajunen, A. (2026).** UAV Multispectral Imagery of Agricultural Fields in Finland [Dataset]. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18233335.svg)](https://doi.org/10.5281/zenodo.18233335)
+
+This dataset contains 10-meter resolution UAV multispectral imagery from agricultural fields in Finland, representing a portion of the data used for model training and evaluation.
+
 ## Repository layout
 
 ```text
