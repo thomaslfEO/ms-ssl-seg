@@ -2,7 +2,7 @@
 
 > **Official implementation** (Under Review, 2026)
 
-Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel multispectral chips, with downstream semantic segmentation on **Sequoia** and **RedEdge** datasets.
+Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel UAV-based multispectral chips from **MSUAV500K** and self-collected data from Finnish agricultural fields, with downstream semantic segmentation on the **WeedMap** dataset using **Sequoia** and **RedEdge** sensors.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
