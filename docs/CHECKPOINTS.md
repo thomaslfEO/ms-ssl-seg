@@ -4,25 +4,33 @@ This repository does not include model checkpoints due to their size. Download t
 
 ## Download Links
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21532723.svg)](https://doi.org/10.5281/zenodo.21532723)
 
-**Status:** 🔒 **Restricted access during peer review**  
-Models will be publicly released after paper acceptance.
+**Zenodo Archive:** [https://doi.org/10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)
 
-**For reviewers:** Access available upon request. Contact: [your.email@domain.com]
+**Status:** In revision.
 
 ### SSL Pre-trained Models
 
-**Zenodo Archive:** https://doi.org/10.5281/zenodo.XXXXXXX (Update after upload)  
-**Backup (Google Drive):** [Link for reviewer access - OPTIONAL]
+| Checkpoint File | SSL Method | Architecture | Epochs | Size | Description |
+|----------------|-----------|--------------|--------|------|-------------|
+| `mae_vit_small_399ep.pth` | MAE | ViT-Small (patch16) | 399 | ~83 MB | Masked Autoencoder pre-trained Vision Transformer (Small) encoder for 4-channel multispectral imagery. Use with DPT decoder for segmentation. |
+| `mae_vit_base_399ep.pth` | MAE | ViT-Base (patch16) | 399 | ~330 MB | Masked Autoencoder pre-trained Vision Transformer (Base) encoder for 4-channel multispectral imagery. Use with DPT decoder for segmentation. |
+| `moco_v3_swin_tiny_79ep.ckpt` | MoCo v3 | Swin-S3-Tiny-224 | 79 | ~765 MB | Momentum Contrast v3 pre-trained Swin Transformer (Tiny) encoder for 4-channel multispectral imagery. Use with U-Net/DeepLabV3+ for segmentation. |
+| `moco_v3_vit_small_199ep.ckpt` | MoCo v3 | ViT-Small (patch16) | 199 | ~765 MB | Momentum Contrast v3 pre-trained Vision Transformer (Small) encoder for 4-channel multispectral imagery. Use with DPT decoder for segmentation. |
 
-| Model | Epochs | Size | Description |
-|-------|--------|------|-------------|
-| `mae_vit_small_399ep.pth` | 399 | ~83 MB | MAE pre-trained ViT-Small on 4-channel multispectral |
-| `mae_vit_base_399ep.pth` | 399 | ~330 MB | MAE pre-trained ViT-Base on 4-channel multispectral |
-| `moco_swin_tiny_79ep.ckpt` | 79 | ~765 MB | MoCo v3 pre-trained Swin-Tiny on multispectral |
-| `moco_swin_tiny_199ep.ckpt` | 199 | ~765 MB | MoCo v3 pre-trained Swin-Tiny (longer training) |
-| `fastsiam_swin.ckpt` | - | ~259 MB | FastSiam pre-trained Swin-Tiny |
+**File Naming Convention:**
+- `{method}_{architecture}_{variant}_{epochs}ep.{ext}`
+- Example: `moco_v3_swin_tiny_79ep.ckpt`
+  - `moco_v3`: Self-supervised learning method (MoCo version 3)
+  - `swin`: Architecture family (Swin Transformer)
+  - `tiny`: Model size variant
+  - `79ep`: Trained for 79 epochs
+  - `.ckpt`: PyTorch Lightning checkpoint format
+
+**Model Types:**
+- **MAE (Masked Autoencoder)**: Encoder-only weights, optimized for reconstruction tasks, work well for dense prediction
+- **MoCo v3 (Momentum Contrast)**: Full model checkpoint (includes projection heads), encoder extracted during loading
 
 ### Downstream Trained Models (Optional)
 
