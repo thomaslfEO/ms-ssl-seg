@@ -16,12 +16,11 @@ Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel UAV-based multis
 
 ### Pre-trained Models
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21532723.svg)](https://doi.org/10.5281/zenodo.21532723)
 
-All pre-trained SSL checkpoints are archived on **Zenodo** (DOI: 10.5281/zenodo.XXXXXXX).
+All pre-trained SSL checkpoints are archived on **Zenodo**: [https://doi.org/10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)
 
-🔒 **Status:** Restricted during peer review. Public release after paper acceptance.  
-📧 **For reviewers:** Contact [your.email@domain.com] for checkpoint access.
+**Status:** In revision.
 
 See **[docs/CHECKPOINTS.md](docs/CHECKPOINTS.md)** for details and download instructions.
 
@@ -208,7 +207,7 @@ See **[docs/downstream_sequoia_rededge.md](docs/downstream_sequoia_rededge.md)**
 
 ## Using Pre-trained Checkpoints
 
-Download checkpoints from **Zenodo** (see [docs/CHECKPOINTS.md](docs/CHECKPOINTS.md)), then:
+Download checkpoints from **Zenodo** ([https://doi.org/10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)), then:
 
 ```bash
 # Set environment variables to checkpoint locations
