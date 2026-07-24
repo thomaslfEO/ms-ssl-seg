@@ -2,7 +2,7 @@
 
 > **Official implementation** (Under Review, 2026)
 
-Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel UAV-based multispectral chips from **MSUAV500K** and self-collected data from Finnish agricultural fields, with downstream semantic segmentation on the **WeedMap** dataset using **Sequoia** and **RedEdge** sensors.
+Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel UAV-based multispectral chips from **MSUAV500K+N** (MSUAV500K extended with self-collected data from Finnish agricultural fields), with downstream semantic segmentation on the **WeedMap** dataset using **Sequoia** and **RedEdge** sensors.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
@@ -30,7 +30,7 @@ A portion of the self-collected training data used for this work is publicly ava
 
 **Thomas, L.-F., Änäkkälä, M. & Lajunen, A. (2026).** UAV Multispectral Imagery of Agricultural Fields in Finland [Dataset]. *Zenodo*. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18233335.svg)](https://doi.org/10.5281/zenodo.18233335)
 
-This dataset contains 10-meter resolution UAV multispectral imagery from agricultural fields in Finland. It represents a portion of the self-collected data used for model training and extends the MSUAV500K dataset.
+This dataset contains 10-meter resolution UAV multispectral imagery from agricultural fields in Finland. It represents the self-collected portion that extends MSUAV500K to create MSUAV500K+N.
 
 ## Repository layout
 
