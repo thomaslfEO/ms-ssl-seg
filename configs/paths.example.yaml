@@ -1,0 +1,25 @@
+# Copy to configs/paths.local.yaml and edit for your machine.
+# Alternatively, set the same keys as environment variables.
+
+# Root folder for all datasets (GeoTIFF chips stay outside git)
+data_root: /path/to/your/data
+
+# Root folder for checkpoints, logs, tensorboard
+output_root: /path/to/your/outputs
+
+# SSL pretraining
+ssl_data_path: /path/to/your/data/ssl_pretrain/chips_512_4ch
+ssl_output_dir: /path/to/your/outputs/ssl
+
+# Pretrained SSL weights for downstream (MicaSense Swin / MoCo)
+ssl_moco_swin_checkpoint: /path/to/your/outputs/ssl/moco_swin_tiny.ckpt
+ssl_fastsiam_checkpoint: /path/to/your/outputs/ssl/fastsiam_swin.ckpt
+ssl_mae_vit_checkpoint: /path/to/your/outputs/ssl/mae_vit_small.pth
+ssl_mae_vit_base_checkpoint: /path/to/your/outputs/ssl/mae_vit_base.pth
+
+# Downstream split folders
+# Expected structure: {dataset}_train_loop/{5p,10p,25p,50p,75p,100p}/
+# Each split contains: images/, labels/, train_files.csv, validation_files.csv,
+#                     Normalize_Bands.csv, Summary_train_val.csv
+sequoia_splits_root: /path/to/Sequoia_train_loop
+rededge_splits_root: /path/to/Rededge_train_loop

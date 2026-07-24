@@ -1,0 +1,42 @@
+# Conda environment for multispectral SSL pretraining + downstream segmentation.
+# Covers MAE, MoCo (torchgeo), SpecDeepMap training/testing, and preprocessing.
+#
+# Create:
+#   conda env create -f environment.yml
+#   conda activate ms-ssl-seg
+#
+# GPU note: PyTorch is installed via pip with CUDA 12.1 wheels.
+# For CPU-only, replace the pip torch lines with:
+#   torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+name: ms-ssl-seg
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pyyaml
+  - tqdm
+  - tensorboard
+  - gdal>=3.6
+  - rasterio
+  - libgdal
+  - pip:
+      # PyTorch (CUDA 12.1). Change index-url for your CUDA / CPU setup.
+      - --index-url https://download.pytorch.org/whl/cu121
+      - torch
+      - torchvision
+      - --extra-index-url https://pypi.org/simple
+      # Downstream (SpecDeepMap)
+      - lightning
+      - segmentation-models-pytorch
+      - torchmetrics
+      - timm
+      # SSL MoCo
+      - torchgeo
+      - lightly
+      - kornia

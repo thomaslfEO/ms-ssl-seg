@@ -1,0 +1,32 @@
+# Optional: copy of root environment.yml for packaging under environments/
+# Prefer creating from the repo root file:
+#   conda env create -f environment.yml
+
+name: ms-ssl-seg
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - pyyaml
+  - tqdm
+  - tensorboard
+  - gdal>=3.6
+  - rasterio
+  - libgdal
+  - pip:
+      - --index-url https://download.pytorch.org/whl/cu121
+      - torch
+      - torchvision
+      - --extra-index-url https://pypi.org/simple
+      - lightning
+      - segmentation-models-pytorch
+      - torchmetrics
+      - timm
+      - torchgeo
+      - lightly
+      - kornia

@@ -1,0 +1,36 @@
+# Python dependencies for multispectral SSL + downstream segmentation
+# Note: PyTorch should be installed separately with CUDA support
+#
+# GPU (CUDA 12.4):
+#   pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+#
+# CPU:
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+#
+# Then install other dependencies:
+#   pip install -r requirements.txt
+
+# Core scientific
+numpy
+pandas
+scipy
+matplotlib
+pyyaml
+tqdm
+tensorboard
+
+# GDAL (install via conda, not pip - pip GDAL is problematic on Windows)
+# Use: conda install -c conda-forge gdal rasterio libgdal
+# GDAL>=3.6  # Commented out - install via conda instead
+# rasterio   # Commented out - install via conda instead
+
+# Deep Learning (SpecDeepMap downstream)
+lightning
+segmentation-models-pytorch
+torchmetrics
+timm
+
+# SSL pretraining (MoCo, MAE)
+torchgeo
+lightly
+kornia

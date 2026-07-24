@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Multispectral Self-Supervised Learning for Semantic Segmentation"
+authors:
+  - family-names: "Your Last Name"
+    given-names: "Your First Name"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    # Add all co-authors
+repository-code: "https://github.com/yourusername/multispectral-ssl"
+url: "https://github.com/yourusername/multispectral-ssl"
+abstract: "Self-supervised pretraining (MAE, MoCo v3) on 4-channel multispectral imagery with downstream semantic segmentation evaluation."
+keywords:
+  - self-supervised learning
+  - multispectral imagery
+  - semantic segmentation
+  - remote sensing
+  - MAE
+  - MoCo
+license: MIT  # or your chosen license
+version: 1.0.0
+date-released: "2026-07-23"
+preferred-citation:
+  type: article
+  title: "Your Paper Title Here"
+  authors:
+    - family-names: "Your Last Name"
+      given-names: "Your First Name"
+  journal: "IEEE Access"
+  year: 2026
+  # Add when published:
+  # doi: "10.1109/ACCESS.2026.XXXXXXX"
+  # volume: X
+  # pages: XXXXX-XXXXX

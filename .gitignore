@@ -1,0 +1,42 @@
+# Local path overrides
+configs/paths.local.yaml
+.env
+
+# Data and experiment outputs (not uploaded)
+data/*
+!data/.gitkeep
+!data/README.md
+outputs/
+**/checkpoints/
+**/lightning_logs/
+**/*.ckpt
+**/*.pth
+**/*.tif
+**/*.tiff
+**/*.img
+
+# Legacy experiment artifacts (if recreated locally)
+**/checkpoints_original_submission_run/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# TensorBoard
+**/events.out.tfevents.*
+
+# Old layout (removed — kept pattern in case of local copies)
+ssl_train/
+sequoia/
+Rededge/
+train_loop/

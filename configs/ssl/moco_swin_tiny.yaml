@@ -1,0 +1,17 @@
+# MoCo v3 — Swin Tiny, 4-channel, ImageNet init
+# Used by: ssl_pretraining/moco/train_moco_swin_tiny.py
+
+model: swin_s3_tiny_224
+in_channels: 4
+version: 3
+max_epochs: 200
+batch_size: 84
+lr: 1.0e-4
+temperature: 0.07
+output_dim: 256
+precision: 16-mixed
+accumulate_grad_batches: 3
+
+normalization:
+  mean: [0.153467, 0.141859, 0.309777, 0.363888]
+  std: [0.104461, 0.131514, 0.147038, 0.174622]

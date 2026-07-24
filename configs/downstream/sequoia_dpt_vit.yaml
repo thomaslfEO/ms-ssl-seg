@@ -1,0 +1,16 @@
+# DPT + ViT downstream defaults
+# Used by: downstream/specdeepmap/train_loop_dpt_vit.py
+
+architecture: dpt          # arch index 5
+vit_size: small            # small | base
+backbone_small: tu-vit_small_patch16_224.augreg_in21k
+backbone_base: tu-vit_base_patch16_224.augreg_in21k
+pretrained_weights: [0, 1, 4]   # imagenet, none, mae ssl
+freeze_options: [true, false]
+batch_size: 8
+n_epochs: 50
+lr: 0.0003
+
+# Set before running with pretrained_weights index 4:
+# SSL_MAE_VIT_CHECKPOINT       (vit_size=small)
+# SSL_MAE_VIT_BASE_CHECKPOINT  (vit_size=base)
