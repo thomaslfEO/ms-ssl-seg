@@ -93,31 +93,18 @@ checkpoint = hf_hub_download(
 )
 ```
 
-## Where to Place Checkpoints Locally
+### Set Environment Variables
 
-After downloading, place checkpoints according to your setup:
-
-### Using Repository Structure
-```
-IEEE_acess_code/
-├── data/
-│   └── ssl_pretrain/
-│       └── checkpoints/
-│           ├── mae_vit_small_399ep.pth
-│           ├── mae_vit_base_399ep.pth
-│           ├── moco_swin_tiny_79ep.ckpt
-│           └── fastsiam_swin.ckpt
-```
-
-### Using Environment Variables
-Set these in your shell or `configs/paths.local.yaml`:
+After downloading, configure checkpoint locations:
 
 ```bash
 export SSL_MAE_VIT_CHECKPOINT=/path/to/mae_vit_small_399ep.pth
 export SSL_MAE_VIT_BASE_CHECKPOINT=/path/to/mae_vit_base_399ep.pth
-export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_swin_tiny_79ep.ckpt
-export SSL_FASTSIAM_CHECKPOINT=/path/to/fastsiam_swin.ckpt
+export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_v3_swin_tiny_79ep.ckpt
+export SSL_MOCO_VIT_CHECKPOINT=/path/to/moco_v3_vit_small_199ep.ckpt
 ```
+
+Or edit `configs/paths.local.yaml` with your checkpoint paths.
 
 ## Checkpoint Details
 
