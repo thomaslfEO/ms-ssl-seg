@@ -14,10 +14,10 @@ This repository does not include model checkpoints due to their size. Download t
 
 | Checkpoint File | SSL Method | Architecture | Epochs | Size | Description |
 |----------------|-----------|--------------|--------|------|-------------|
-| `mae_vit_small_399ep.pth` | MAE | ViT-Small (patch16) | 399 | ~83 MB | Masked Autoencoder pre-trained Vision Transformer (Small) encoder for 4-channel multispectral imagery. Use with DPT decoder for segmentation. |
-| `mae_vit_base_399ep.pth` | MAE | ViT-Base (patch16) | 399 | ~330 MB | Masked Autoencoder pre-trained Vision Transformer (Base) encoder for 4-channel multispectral imagery. Use with DPT decoder for segmentation. |
-| `moco_v3_swin_tiny_79ep.ckpt` | MoCo v3 | Swin-S3-Tiny-224 | 79 | ~765 MB | Momentum Contrast v3 pre-trained Swin Transformer (Tiny) encoder for 4-channel multispectral imagery. Use with U-Net/DeepLabV3+ for segmentation. |
-| `moco_v3_vit_small_199ep.ckpt` | MoCo v3 | ViT-Small (patch16) | 199 | ~765 MB | Momentum Contrast v3 pre-trained Vision Transformer (Small) encoder for 4-channel multispectral imagery. Use with DPT decoder for segmentation. |
+| `mae_vit_small_399ep.pth` | MAE | ViT-Small (patch16) | 399 | ~83 MB | Masked Autoencoder pre-trained Vision Transformer (Small) encoder on MSUAV500K+N. Use with DPT decoder for segmentation. |
+| `mae_vit_base_399ep.pth` | MAE | ViT-Base (patch16) | 399 | ~330 MB | Masked Autoencoder pre-trained Vision Transformer (Base) encoder on MSUAV500K+N. Use with DPT decoder for segmentation. |
+| `moco_v3_swin_tiny_79ep.ckpt` | MoCo v3 | Swin-S3-Tiny-224 | 79 | ~765 MB | Momentum Contrast v3 pre-trained Swin Transformer (Tiny) encoder on MSUAV500K+N. Use with U-Net/DeepLabV3+ for segmentation. |
+| `moco_v3_vit_small_199ep.ckpt` | MoCo v3 | ViT-Small (patch16) | 199 | ~765 MB | Momentum Contrast v3 pre-trained Vision Transformer (Small) encoder on MSUAV500K+N. Use with DPT decoder for segmentation. |
 
 **File Naming Convention:**
 - `{method}_{architecture}_{variant}_{epochs}ep.{ext}`
@@ -27,6 +27,9 @@ This repository does not include model checkpoints due to their size. Download t
   - `tiny`: Model size variant
   - `79ep`: Trained for 79 epochs
   - `.ckpt`: PyTorch Lightning checkpoint format
+
+**Training Data:**
+All models trained on **MSUAV500K+N** - MSUAV500K extended with self-collected Finnish agricultural field data (4 spectral bands: Green, Red, Red-Edge, NIR).
 
 **Model Types:**
 - **MAE (Masked Autoencoder)**: Encoder-only weights, optimized for reconstruction tasks, work well for dense prediction
