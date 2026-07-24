@@ -3,12 +3,14 @@ message: "If you use this software, please cite it as below."
 type: software
 title: "Multispectral Self-Supervised Learning for Semantic Segmentation"
 authors:
-  - family-names: "Your Last Name"
-    given-names: "Your First Name"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
-    # Add all co-authors
-repository-code: "https://github.com/yourusername/multispectral-ssl"
-url: "https://github.com/yourusername/multispectral-ssl"
+  - family-names: "Thomas"
+    given-names: "Leon-Friedrich"
+  - family-names: "Änäkkälä"
+    given-names: "Mikko"
+  - family-names: "Lajunen"
+    given-names: "Antti"
+repository-code: "https://github.com/thomaslfEO/multispectral-ssl"
+url: "https://github.com/thomaslfEO/multispectral-ssl"
 abstract: "Self-supervised pretraining (MAE, MoCo v3) on 4-channel multispectral imagery with downstream semantic segmentation evaluation."
 keywords:
   - self-supervised learning
@@ -17,18 +19,36 @@ keywords:
   - remote sensing
   - MAE
   - MoCo
-license: MIT  # or your chosen license
+  - UAV
+license: MIT
 version: 1.0.0
-date-released: "2026-07-23"
+date-released: "2026-07-24"
 preferred-citation:
   type: article
-  title: "Your Paper Title Here"
+  title: "Self-supervised training for high-resolution close-range multispectral remote sensing imagery"
   authors:
-    - family-names: "Your Last Name"
-      given-names: "Your First Name"
-  journal: "IEEE Access"
+    - family-names: "Thomas"
+      given-names: "Leon-Friedrich"
+    - family-names: "Änäkkälä"
+      given-names: "Mikko"
+    - family-names: "Lajunen"
+      given-names: "Antti"
   year: 2026
+  url: "https://arxiv.org/abs/2607.11366"
   # Add when published:
-  # doi: "10.1109/ACCESS.2026.XXXXXXX"
-  # volume: X
-  # pages: XXXXX-XXXXX
+  # journal: "Journal Name"
+  # doi: "10.1109/..."
+references:
+  - type: dataset
+    title: "UAV Multispectral Imagery of Agricultural Fields in Finland"
+    authors:
+      - family-names: "Thomas"
+        given-names: "Leon-Friedrich"
+      - family-names: "Änäkkälä"
+        given-names: "Mikko"
+      - family-names: "Lajunen"
+        given-names: "Antti"
+    year: 2026
+    publisher: "Zenodo"
+    doi: "10.5281/zenodo.18233335"
+    url: "https://doi.org/10.5281/zenodo.18233335"
