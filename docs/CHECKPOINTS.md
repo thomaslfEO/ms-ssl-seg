@@ -35,17 +35,6 @@ All models trained on **MSUAV500K+N** - MSUAV500K extended with self-collected F
 - **MAE (Masked Autoencoder)**: Encoder-only weights, optimized for reconstruction tasks, work well for dense prediction
 - **MoCo v3 (Momentum Contrast)**: Full model checkpoint (includes projection heads), encoder extracted during loading
 
-### Downstream Trained Models (Optional)
-
-Best checkpoints from downstream segmentation experiments.
-
-**Location:** [Google Drive Link - TO BE ADDED]
-
-Structure:
-```
-downstream_sequoia/checkpoints/{split}/{weight}_{frozen|unfrozen}/best_model.ckpt
-downstream_rededge/checkpoints/{split}/{weight}_{frozen|unfrozen}/best_model.ckpt
-```
 
 ## Installation Instructions
 
