@@ -11,7 +11,7 @@ authors:
     given-names: "Antti"
 repository-code: "https://github.com/thomaslfEO/multispectral-ssl"
 url: "https://github.com/thomaslfEO/multispectral-ssl"
-abstract: "Self-supervised pretraining (MAE, MoCo v3) on 4-channel multispectral imagery with downstream semantic segmentation evaluation."
+abstract: "Self-supervised pretraining (MAE, MoCo v3) on 4-channel UAV multispectral imagery (MSUAV500K+N) with downstream semantic segmentation evaluation on the WeedMap dataset."
 keywords:
   - self-supervised learning
   - multispectral imagery
