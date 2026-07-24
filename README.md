@@ -1,18 +1,18 @@
 # Multispectral Self-Supervised Learning for Semantic Segmentation
 
-> **Official implementation** of "[Your Paper Title]" (IEEE Access, 2026)
+> **Official implementation** of "Self-supervised training for high-resolution close-range multispectral remote sensing imagery" (Under Review, 2026)
 
 Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel multispectral chips, with downstream semantic segmentation on **Sequoia** and **RedEdge** datasets.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.3.0-red.svg)](https://pytorch.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2607.11366-b31b1b.svg)](https://arxiv.org/abs/2607.11366)
 
 ## 📄 Paper Information
 
-**Status:** Under Review at IEEE Access  
-**Authors:** [Your Name], [Co-authors]  
-**Preprint:** [arXiv link when available]
+**Status:** Under Review  
+**Preprint:** [arXiv:2607.11366](https://arxiv.org/abs/2607.11366)
 
 ### Pre-trained Models
 
