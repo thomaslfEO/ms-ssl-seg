@@ -191,6 +191,8 @@ def get_args_parser():
     # ImageNet initialization parameters
     parser.add_argument('--init_from_imagenet', action='store_true',
                         help='Initialize encoder from ImageNet-pretrained ViT or DINO-pretrained model (default: True)')
+    parser.add_argument('--no_init_from_imagenet', dest='init_from_imagenet', action='store_false',
+                        help='Disable ImageNet initialization (random init instead)')
     parser.set_defaults(init_from_imagenet=True)
     parser.add_argument('--imagenet_model_name', default='vit_small_patch16_224.augreg_in21k', type=str,
                         help='timm model name for initialization (e.g., vit_base_patch16_224.augreg_in21k, vit_small_patch16_224.augreg_in21k)')

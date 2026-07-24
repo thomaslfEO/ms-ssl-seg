@@ -693,7 +693,7 @@ class MyModel(L.LightningModule):
                  sync_dist=False,
                  on_epoch=True, 
                  on_step=False)
-        print(f"✓ Logged val_iou_epoch={val_iou_value:.4f} for ModelCheckpoint")
+        print(f"[OK] Logged val_iou_epoch={val_iou_value:.4f} for ModelCheckpoint")
         # Reset metric for next epoch
         self.val_iou.reset()
         # Also reset training IoU metric
@@ -1068,9 +1068,9 @@ class CheckpointCleanupCallback(L.Callback):
                 if os.path.exists(filepath):
                     try:
                         os.remove(filepath)
-                        print(f"✓ Deleted old checkpoint: {os.path.basename(filepath)} (score: {score:.4f})")
+                        print(f"[OK] Deleted old checkpoint: {os.path.basename(filepath)} (score: {score:.4f})")
                     except Exception as e:
-                        print(f"✗ Failed to delete checkpoint {filepath}: {e}")
+                        print(f"[X] Failed to delete checkpoint {filepath}: {e}")
             # Update list to keep only top k
             self.saved_checkpoints = self.saved_checkpoints[:self.save_top_k]
             print(f"Kept top {self.save_top_k} checkpoints. Best score: {self.saved_checkpoints[0][0]:.4f}")
@@ -1340,8 +1340,8 @@ def dl_train(
         if save_top_k == -1:
             print("  WARNING: save_top_k=-1 will save ALL checkpoints (every epoch)")
         elif save_top_k == 1:
-            print("  → Should save ONLY the best model (highest val_iou_epoch)")
-            print("  → If all epochs are being saved, the metric 'val_iou_epoch' may not be found")
+            print("  -> Should save ONLY the best model (highest val_iou_epoch)")
+            print("  -> If all epochs are being saved, the metric 'val_iou_epoch' may not be found")
         
         # Create ModelCheckpoint - ensure metric name matches what we log
         # The metric 'val_iou_epoch' is logged in on_validation_epoch_end
@@ -1364,12 +1364,12 @@ def dl_train(
         
         print(f"ModelCheckpoint configured: save_top_k={checkpoint_callback.save_top_k}, monitor='{checkpoint_callback.monitor}', mode='{checkpoint_callback.mode}'")
         if save_top_k == 1:
-            print(f"  → Will save ONLY the best model (highest val_iou_epoch)")
-            print(f"  → WARNING: If you see all epochs being saved, the metric 'val_iou_epoch' may not be available to ModelCheckpoint")
+            print(f"  -> Will save ONLY the best model (highest val_iou_epoch)")
+            print(f"  -> WARNING: If you see all epochs being saved, the metric 'val_iou_epoch' may not be available to ModelCheckpoint")
         elif save_top_k > 1:
-            print(f"  → Will save the top {save_top_k} models")
+            print(f"  -> Will save the top {save_top_k} models")
         else:
-            print(f"  → Will save all models (save_top_k={save_top_k})")
+            print(f"  -> Will save all models (save_top_k={save_top_k})")
 
         feedback_callback = FeedbackCallback(feedback=feedback)
         
@@ -1415,8 +1415,8 @@ def dl_train(
         if save_top_k == -1:
             print("  WARNING: save_top_k=-1 will save ALL checkpoints (every epoch)")
         elif save_top_k == 1:
-            print("  → Should save ONLY the best model (highest val_iou_epoch)")
-            print("  → If all epochs are being saved, the metric 'val_iou_epoch' may not be found")
+            print("  -> Should save ONLY the best model (highest val_iou_epoch)")
+            print("  -> If all epochs are being saved, the metric 'val_iou_epoch' may not be found")
         
         # Create ModelCheckpoint - ensure metric name matches what we log
         # The metric 'val_iou_epoch' is logged in on_validation_epoch_end
@@ -1439,12 +1439,12 @@ def dl_train(
         
         print(f"ModelCheckpoint configured: save_top_k={checkpoint_callback.save_top_k}, monitor='{checkpoint_callback.monitor}', mode='{checkpoint_callback.mode}'")
         if save_top_k == 1:
-            print(f"  → Will save ONLY the best model (highest val_iou_epoch)")
-            print(f"  → WARNING: If you see all epochs being saved, the metric 'val_iou_epoch' may not be available to ModelCheckpoint")
+            print(f"  -> Will save ONLY the best model (highest val_iou_epoch)")
+            print(f"  -> WARNING: If you see all epochs being saved, the metric 'val_iou_epoch' may not be available to ModelCheckpoint")
         elif save_top_k > 1:
-            print(f"  → Will save the top {save_top_k} models")
+            print(f"  -> Will save the top {save_top_k} models")
         else:
-            print(f"  → Will save all models (save_top_k={save_top_k})")
+            print(f"  -> Will save all models (save_top_k={save_top_k})")
 
         feedback_callback = FeedbackCallback(feedback=feedback)
         

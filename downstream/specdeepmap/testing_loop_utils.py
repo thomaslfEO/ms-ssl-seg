@@ -36,7 +36,7 @@ def find_best_checkpoint(run_dir: str) -> str | None:
         return None
 
     def _score(fname: str) -> float:
-        match = re.search(r"val_iou[_=]([\d.]+)", fname)
+        match = re.search(r"val_iou[_=](\d+(?:\.\d+)?)", fname)
         return float(match.group(1)) if match else -1.0
 
     best = max(ckpts, key=_score)
