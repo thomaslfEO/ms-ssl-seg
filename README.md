@@ -211,8 +211,8 @@ Download checkpoints from **Zenodo** ([https://doi.org/10.5281/zenodo.21532723](
 
 ```bash
 # Set environment variables to checkpoint locations
-export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_swin_tiny_79ep.ckpt
-export SSL_FASTSIAM_CHECKPOINT=/path/to/fastsiam_swin.ckpt
+export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_v3_swin_tiny_79ep.ckpt
+export SSL_MOCO_VIT_CHECKPOINT=/path/to/moco_v3_vit_small_199ep.ckpt
 export SSL_MAE_VIT_CHECKPOINT=/path/to/mae_vit_small_399ep.pth
 export SSL_MAE_VIT_BASE_CHECKPOINT=/path/to/mae_vit_base_399ep.pth
 
