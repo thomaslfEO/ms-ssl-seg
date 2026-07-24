@@ -26,7 +26,7 @@ class MaskedAutoencoderViT(nn.Module):
                  embed_dim=384, depth=24, num_heads=16,
                  decoder_embed_dim=512, decoder_depth=8, decoder_num_heads=16,
                  mlp_ratio=4., norm_layer=nn.LayerNorm, norm_pix_loss=False,
-                 init_from_imagenet=True, imagenet_model_name='vit_small_patch8_224.dino'):
+                 init_from_imagenet=True, imagenet_model_name='vit_small_patch16_224.augreg_in21k'):
         super().__init__()
 
         self.in_chans = in_chans
