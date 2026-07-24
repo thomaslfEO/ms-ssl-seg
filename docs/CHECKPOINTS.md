@@ -49,48 +49,21 @@ downstream_rededge/checkpoints/{split}/{weight}_{frozen|unfrozen}/best_model.ckp
 
 ## Installation Instructions
 
-### Option 1: Manual Download (Google Drive)
+### Download from Zenodo
 
-1. Download checkpoints from the Google Drive link above
-2. Place them in your local data directory:
+Download checkpoints directly from Zenodo: [https://doi.org/10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)
 
-```bash
-# SSL checkpoints
-mkdir -p data/ssl_pretrain/checkpoints
-# Place downloaded .pth and .ckpt files here
-
-# Or set environment variables
-export SSL_MAE_VIT_CHECKPOINT=/path/to/mae_vit_small_399ep.pth
-export SSL_MAE_VIT_BASE_CHECKPOINT=/path/to/mae_vit_base_399ep.pth
-export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_swin_tiny_79ep.ckpt
-export SSL_FASTSIAM_CHECKPOINT=/path/to/fastsiam_swin.ckpt
-```
-
-### Option 2: Using gdown (Python package)
+**Using wget/curl:**
 
 ```bash
-pip install gdown
+# Download using wget
+wget https://zenodo.org/records/21532723/files/mae_vit_small_399ep.pth
+wget https://zenodo.org/records/21532723/files/mae_vit_base_399ep.pth
+wget https://zenodo.org/records/21532723/files/moco_v3_swin_tiny_79ep.ckpt
+wget https://zenodo.org/records/21532723/files/moco_v3_vit_small_199ep.ckpt
 
-# Download from Google Drive (replace FILE_ID with actual ID)
-gdown https://drive.google.com/uc?id=FILE_ID -O mae_vit_small_399ep.pth
-```
-
-### Option 3: Using Zenodo (if uploaded there)
-
-```bash
-# Download using wget or curl
-wget https://zenodo.org/record/XXXXX/files/mae_vit_small_399ep.pth
-```
-
-### Option 4: Using HuggingFace Hub (if uploaded there)
-
-```python
-from huggingface_hub import hf_hub_download
-
-checkpoint = hf_hub_download(
-    repo_id="your-username/multispectral-ssl",
-    filename="mae_vit_small_399ep.pth"
-)
+# Or using curl
+curl -O https://zenodo.org/records/21532723/files/mae_vit_small_399ep.pth
 ```
 
 ### Set Environment Variables
