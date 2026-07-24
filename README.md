@@ -1,6 +1,6 @@
-# Multispectral Self-Supervised Learning for Semantic Segmentation
+# Self-supervised training for high-resolution close-range multispectral remote sensing imagery
 
-> **Official implementation** of "Self-supervised training for high-resolution close-range multispectral remote sensing imagery" (Under Review, 2026)
+> **Official implementation** (Under Review, 2026)
 
 Self-supervised pretraining (**MAE**, **MoCo v3**) on 4-channel multispectral chips, with downstream semantic segmentation on **Sequoia** and **RedEdge** datasets.
 
