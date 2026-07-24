@@ -11,11 +11,12 @@ output_root: /path/to/your/outputs
 ssl_data_path: /path/to/your/data/ssl_pretrain/chips_512_4ch
 ssl_output_dir: /path/to/your/outputs/ssl
 
-# Pretrained SSL weights for downstream (MicaSense Swin / MoCo)
-ssl_moco_swin_checkpoint: /path/to/your/outputs/ssl/moco_swin_tiny.ckpt
-ssl_fastsiam_checkpoint: /path/to/your/outputs/ssl/fastsiam_swin.ckpt
-ssl_mae_vit_checkpoint: /path/to/your/outputs/ssl/mae_vit_small.pth
-ssl_mae_vit_base_checkpoint: /path/to/your/outputs/ssl/mae_vit_base.pth
+# Pretrained SSL weights for downstream
+# Download from Zenodo: https://doi.org/10.5281/zenodo.21532723
+ssl_moco_swin_checkpoint: /path/to/moco_v3_swin_tiny_79ep.ckpt
+ssl_moco_vit_checkpoint: /path/to/moco_v3_vit_small_199ep.ckpt
+ssl_mae_vit_checkpoint: /path/to/mae_vit_small_399ep.pth
+ssl_mae_vit_base_checkpoint: /path/to/mae_vit_base_399ep.pth
 
 # Downstream split folders
 # Expected structure: {dataset}_train_loop/{5p,10p,25p,50p,75p,100p}/
