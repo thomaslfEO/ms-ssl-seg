@@ -13,7 +13,7 @@ ssl_output_dir: /path/to/your/outputs/ssl
 
 # Pretrained SSL weights for downstream
 # Download from Zenodo: https://doi.org/10.5281/zenodo.21532723
-ssl_moco_swin_checkpoint: /path/to/moco_v3_swin_tiny_79ep.ckpt
+ssl_moco_swin_checkpoint: /path/to/moco_v3_swin_s3.ckpt
 ssl_moco_vit_checkpoint: /path/to/moco_v3_vit_small_199ep.ckpt
 ssl_mae_vit_checkpoint: /path/to/mae_vit_small_399ep.pth
 ssl_mae_vit_base_checkpoint: /path/to/mae_vit_base_399ep.pth

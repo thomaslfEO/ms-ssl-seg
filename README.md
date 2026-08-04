@@ -20,7 +20,7 @@ conda activate ms-ssl-seg
 
 # Configure paths
 export DATA_ROOT=/path/to/data
-export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_v3_swin_tiny_79ep.ckpt
+export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_v3_swin_s3.ckpt
 
 # Run downstream training
 cd downstream/specdeepmap
