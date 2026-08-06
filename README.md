@@ -5,17 +5,8 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2607.11366-b31b1b.svg)](https://arxiv.org/abs/2607.11366)
 <!-- TODO: Add Zenodo badge when available -->
 
-> **Official implementation** • Under Review, 2026 • [Paper](https://arxiv.org/abs/2607.11366)
-
-Self-supervised learning (**MAE**, **MoCo v3**) on **MSUAV500K+N** (4-channel multispectral UAV imagery) for semantic segmentation on **WeedMap** dataset using **Sequoia** and **RedEdge** sensors.
-
-**Resources:** [Pre-trained Models](https://doi.org/10.5281/zenodo.XXXXXXX) • [WeedMap Dataset](https://doi.org/10.5281/zenodo.XXXXXXX)
-
-<!-- TODO: Update Zenodo DOIs when available:
-- Pre-trained models: 10.5281/zenodo.21532723 (embargoed until acceptance)
-- WeedMap dataset: Contact authors for access
-- Finnish UAV data (MSUAV500K+N extension): 10.5281/zenodo.18233335
--->
+> Official implementation of "[Self-supervised training for high-resolution close-range multispectral remote sensing imagery](https://arxiv.org/abs/2607.11366)"  
+> Under Review, 2026
 
 ---
 
