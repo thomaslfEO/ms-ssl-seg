@@ -24,7 +24,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 
 ## Pre-trained Models
 
-Download from Zenodo: [10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)
+Download from Zenodo: [10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723) (will be made available after publication)
 
 | File | Method | Architecture | Downstream Use |
 |------|--------|--------------|----------------|
