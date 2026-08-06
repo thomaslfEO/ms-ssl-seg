@@ -3,13 +3,19 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![arXiv](https://img.shields.io/badge/arXiv-2607.11366-b31b1b.svg)](https://arxiv.org/abs/2607.11366)
-[![Models](https://zenodo.org/badge/DOI/10.5281/zenodo.21532723.svg)](https://doi.org/10.5281/zenodo.21532723)
+<!-- TODO: Add Zenodo badge when available -->
 
 > **Official implementation** • Under Review, 2026 • [Paper](https://arxiv.org/abs/2607.11366)
 
 Self-supervised learning (**MAE**, **MoCo v3**) on **MSUAV500K+N** (4-channel multispectral UAV imagery) for semantic segmentation on **WeedMap** dataset using **Sequoia** and **RedEdge** sensors.
 
-**Resources:** [Pre-trained Models](https://doi.org/10.5281/zenodo.21532723) • [Finnish UAV Dataset](https://doi.org/10.5281/zenodo.18233335)
+**Resources:** [Pre-trained Models](https://doi.org/10.5281/zenodo.XXXXXXX) • [WeedMap Dataset](https://doi.org/10.5281/zenodo.XXXXXXX)
+
+<!-- TODO: Update Zenodo DOIs when available:
+- Pre-trained models: 10.5281/zenodo.21532723 (embargoed until acceptance)
+- WeedMap dataset: Contact authors for access
+- Finnish UAV data (MSUAV500K+N extension): 10.5281/zenodo.18233335
+-->
 
 ---
 
@@ -27,7 +33,8 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 
 ## Pre-trained Models
 
-Download from [Zenodo](https://doi.org/10.5281/zenodo.21532723):
+<!-- TODO: Update Zenodo link when available -->
+Download from Zenodo (available upon publication):
 
 | File | Method | Arch | Epochs | Use |
 |------|--------|------|--------|-----|
@@ -78,7 +85,7 @@ export REDEDGE_SPLITS_ROOT=/path/to/Rededge_train_loop
 
 ```bash
 cd ssl_pretraining/mae
-python main_pretrain_imagenet_init.py \
+python mae_pretrain_vit.py \
   --data_path /path/to/ssl_chips \
   --model mae_vit_small_patch16 \
   --epochs 400
@@ -135,21 +142,6 @@ python testing_loop.py --preset swin --dataset sequoia
 python test.py \
   --test_data_csv validation_files.csv \
   --model_checkpoint model.ckpt
-```
-
-## Repository Structure
-
-```
-ssl_pretraining/          # MAE and MoCo v3 training
-  ├── mae/                #   - Masked Autoencoder
-  └── moco/               #   - Momentum Contrast v3
-downstream/specdeepmap/   # Semantic segmentation
-  ├── train_loop.py       #   - U-Net + Swin experiments
-  ├── train_loop_dpt_vit.py  #   - DPT + ViT experiments
-  └── testing_loop.py     #   - Batch evaluation
-preprocessing/            # Data filtering and splits
-configs/                  # Path configuration examples
-environments/             # Conda environment files
 ```
 
 ## Citation
