@@ -1,6 +1,6 @@
 # Self-supervised training for high-resolution close-range multispectral remote sensing imagery
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![arXiv](https://img.shields.io/badge/arXiv-2607.11366-b31b1b.svg)](https://arxiv.org/abs/2607.11366)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21532723.svg)](https://doi.org/10.5281/zenodo.21532723)
@@ -24,7 +24,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 
 ## Pre-trained Models
 
-Download from Zenodo: [10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723) (will be made available after publication)
+Pre-trained checkpoints will be available upon publication via Zenodo: [10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)
 
 | File | Method | Architecture | Downstream Use |
 |------|--------|--------------|----------------|
@@ -161,4 +161,4 @@ python test.py \
 
 ## License
 
-MIT License. SpecDeepMap components retain their original license (see `downstream/specdeepmap/LICENSE_specdeepmap.md`).
+GPL v3. See [LICENSE](LICENSE) for details. SpecDeepMap components also use GPL v3 (see `downstream/specdeepmap/LICENSE_specdeepmap.md`).
