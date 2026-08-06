@@ -77,7 +77,8 @@ export REDEDGE_SPLITS_ROOT=/path/to/Rededge_train_loop
 ```bash
 cd ssl_pretraining/mae
 python mae_pretrain_vit.py \
-  --data_path /path/to/ssl_chips \
+  --train_data /path/to/ssl_chips/train \
+  --val_data /path/to/ssl_chips/val \
   --model mae_vit_small_patch16 \
   --epochs 400
 ```

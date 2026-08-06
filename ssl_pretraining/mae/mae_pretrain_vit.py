@@ -212,10 +212,10 @@ def get_args_parser():
                         help='epochs to warmup LR')
 
     # Dataset parameters
-    parser.add_argument('--data_path', default='', type=str,
-                        help='Directory containing unlabeled .tif chips for SSL pretraining')
-    parser.add_argument('--val_data_path', default='', type=str,
-                        help='Optional validation directory (defaults to sibling val/ if present)')
+    parser.add_argument('--train_data', default='', type=str,
+                        help='Directory containing unlabeled training .tif chips for SSL pretraining')
+    parser.add_argument('--val_data', default='', type=str,
+                        help='Directory containing unlabeled validation .tif chips (auto-detected if not provided)')
 
     parser.add_argument('--output_dir', default='',
                         help='Directory for checkpoints and logs')
@@ -256,7 +256,7 @@ def main(args):
     # Pipeline: Load 512x512 -> RandomCrop to crop_size -> /255 to [0,1] -> 
     #           RandomCrop -> RandomHorizontalFlip -> Normalize
     dataset_train = MultiSpectralChipDataset(
-        root=args.data_path,
+        root=args.train_data,
         crop_size=448,  # Initial crop size (e.g., 224) from larger images (512x512)
         input_size=args.input_size,  # Final output size after RandomResizedCrop
         mean=[0.153467, 0.141859, 0.309777, 0.363888],
@@ -284,9 +284,9 @@ def main(args):
     
     # Optional validation dataset
     data_loader_val = None
-    if args.val_data_path and os.path.exists(args.val_data_path):
+    if args.val_data and os.path.exists(args.val_data):
         dataset_val = MultiSpectralChipDataset(
-            root=args.val_data_path,
+            root=args.val_data,
             crop_size=448,
             input_size=args.input_size,
             mean=[0.153467, 0.141859, 0.309777, 0.363888],
@@ -418,13 +418,13 @@ if __name__ == '__main__':
 
     args = get_args_parser()
     args = args.parse_args()
-    if not args.data_path:
-        args.data_path = str(ssl_pretrain_data() / "train" / "all")
-    if not args.val_data_path:
+    if not args.train_data:
+        args.train_data = str(ssl_pretrain_data() / "train" / "all")
+    if not args.val_data:
         # Auto-detect validation data in sibling val/ folder
         val_path = ssl_pretrain_data() / "val" / "all"
         if val_path.exists():
-            args.val_data_path = str(val_path)
+            args.val_data = str(val_path)
     if not args.output_dir:
         args.output_dir = str(ssl_output_dir() / "mae_vit_small")
     if not args.log_dir:
