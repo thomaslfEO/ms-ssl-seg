@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![arXiv](https://img.shields.io/badge/arXiv-2607.11366-b31b1b.svg)](https://arxiv.org/abs/2607.11366)
-<!-- TODO: Add Zenodo badge when available -->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21532723.svg)](https://doi.org/10.5281/zenodo.21532723)
 
 > Official implementation of "[Self-supervised training for high-resolution close-range multispectral remote sensing imagery](https://arxiv.org/abs/2607.11366)"  
 > Under Review, 2026
@@ -24,8 +24,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 
 ## Pre-trained Models
 
-<!-- TODO: Update Zenodo link when available -->
-Download from Zenodo (available upon publication):
+Download from Zenodo: [10.5281/zenodo.21532723](https://doi.org/10.5281/zenodo.21532723)
 
 | File | Method | Architecture | Downstream Use |
 |------|--------|--------------|----------------|
