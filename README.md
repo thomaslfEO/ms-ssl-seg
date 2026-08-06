@@ -7,43 +7,149 @@
 
 > **Official implementation** • Under Review, 2026 • [Paper](https://arxiv.org/abs/2607.11366)
 
-Self-supervised learning (**MAE**, **MoCo v3**) on **MSUAV500K+N** for semantic segmentation on **WeedMap** dataset.
+Self-supervised learning (**MAE**, **MoCo v3**) on **MSUAV500K+N** (4-channel multispectral UAV imagery) for semantic segmentation on **WeedMap** dataset using **Sequoia** and **RedEdge** sensors.
 
-**Pre-trained Models:** [Zenodo](https://doi.org/10.5281/zenodo.21532723) • **Dataset:** [Finnish UAV Data](https://doi.org/10.5281/zenodo.18233335)
+**Resources:** [Pre-trained Models](https://doi.org/10.5281/zenodo.21532723) • [Finnish UAV Dataset](https://doi.org/10.5281/zenodo.18233335)
 
-## Quick Start
+---
+
+## Installation
 
 ```bash
-# Install environment
+# Conda (recommended)
 conda env create -f environment.yml
 conda activate ms-ssl-seg
 
-# Configure paths
-export DATA_ROOT=/path/to/data
-export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_v3_swin_s3.ckpt
-
-# Run downstream training
-cd downstream/specdeepmap
-python train_loop.py --dataset sequoia
+# Or pip
+pip install -r requirements.txt
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 ```
 
-**See [docs/](docs/) for detailed instructions.**
+## Pre-trained Models
 
-## Documentation
+Download from [Zenodo](https://doi.org/10.5281/zenodo.21532723):
 
-- **[CHECKPOINTS.md](docs/CHECKPOINTS.md)** - Download and use pre-trained models
-- **[DATA_STRUCTURE.md](docs/DATA_STRUCTURE.md)** - Data organization and format
-- **[ssl_pretraining.md](docs/ssl_pretraining.md)** - SSL training (MAE, MoCo v3)
-- **[downstream_sequoia_rededge.md](docs/downstream_sequoia_rededge.md)** - Downstream segmentation
+| File | Method | Arch | Epochs | Use |
+|------|--------|------|--------|-----|
+| `mae_vit_small_399ep.pth` | MAE | ViT-Small | 399 | DPT decoder |
+| `mae_vit_base_399ep.pth` | MAE | ViT-Base | 399 | DPT decoder |
+| `moco_v3_swin_s3.ckpt` | MoCo v3 | Swin-Tiny | 79 | U-Net/DeepLabV3+ |
+| `moco_v3_vit_small_199ep.ckpt` | MoCo v3 | ViT-Small | 199 | DPT decoder |
+
+Configure paths via environment variables or `configs/paths.local.yaml`:
+
+```bash
+export SSL_MAE_VIT_CHECKPOINT=/path/to/mae_vit_small_399ep.pth
+export SSL_MOCO_SWIN_CHECKPOINT=/path/to/moco_v3_swin_s3.ckpt
+```
+
+## Data Setup
+
+Expected structure for downstream experiments:
+
+```
+{Sequoia|Rededge}_train_loop/
+├── 5p/    # 5% training data split
+├── 10p/
+├── 25p/
+├── 50p/
+├── 75p/
+└── 100p/
+    ├── train_files.csv
+    ├── validation_files.csv
+    ├── Normalize_Bands.csv
+    ├── Summary_train_val.csv
+    ├── images/
+    └── labels/
+```
+
+Set paths:
+
+```bash
+export SEQUOIA_SPLITS_ROOT=/path/to/Sequoia_train_loop
+export REDEDGE_SPLITS_ROOT=/path/to/Rededge_train_loop
+```
+
+## Usage
+
+### 1. SSL Pre-training
+
+**MAE (ViT):**
+
+```bash
+cd ssl_pretraining/mae
+python main_pretrain_imagenet_init.py \
+  --data_path /path/to/ssl_chips \
+  --model mae_vit_small_patch16 \
+  --epochs 400
+```
+
+**MoCo v3 (Swin):**
+
+```bash
+cd ssl_pretraining/moco
+python train_moco_swin_tiny.py \
+  --train_data /path/to/ssl_chips/train \
+  --val_data /path/to/ssl_chips/val \
+  --max_epochs 200
+```
+
+**Convert MAE for downstream:**
+
+```bash
+cd ssl_pretraining/mae
+python convert_mae_to_timm_vit.py \
+  --mae_checkpoint checkpoint.pth \
+  --output_path vit_small_encoder.pth
+```
+
+### 2. Downstream Training
+
+**Single run:**
+
+```bash
+cd downstream/specdeepmap
+python train.py --input_folder Sequoia_train_loop/100p
+```
+
+**Full experiment grid** (all splits × pretrained weights × frozen/unfrozen):
+
+```bash
+# U-Net + Swin
+python train_loop.py --dataset sequoia
+
+# DPT + ViT
+python train_loop_dpt_vit.py --dataset sequoia --vit_size small
+
+# Switch to RedEdge
+python train_loop.py --dataset rededge
+```
+
+### 3. Evaluation
+
+```bash
+# Test all checkpoints from training loop
+python testing_loop.py --preset swin --dataset sequoia
+
+# Single checkpoint
+python test.py \
+  --test_data_csv validation_files.csv \
+  --model_checkpoint model.ckpt
+```
 
 ## Repository Structure
 
 ```
-ssl_pretraining/     SSL training (MAE, MoCo v3)
-downstream/          Semantic segmentation (SpecDeepMap)
-preprocessing/       Data preparation scripts
-configs/             Configuration examples
-docs/                Detailed documentation
+ssl_pretraining/          # MAE and MoCo v3 training
+  ├── mae/                #   - Masked Autoencoder
+  └── moco/               #   - Momentum Contrast v3
+downstream/specdeepmap/   # Semantic segmentation
+  ├── train_loop.py       #   - U-Net + Swin experiments
+  ├── train_loop_dpt_vit.py  #   - DPT + ViT experiments
+  └── testing_loop.py     #   - Batch evaluation
+preprocessing/            # Data filtering and splits
+configs/                  # Path configuration examples
+environments/             # Conda environment files
 ```
 
 ## Citation
@@ -58,6 +164,18 @@ docs/                Detailed documentation
 }
 ```
 
+**Dataset citation:**
+
+```bibtex
+@dataset{thomas2026uav,
+  author={Thomas, Leon-Friedrich and Änäkkälä, Mikko and Lajunen, Antti},
+  title={UAV Multispectral Imagery of Agricultural Fields in Finland},
+  year={2026},
+  publisher={Zenodo},
+  doi={10.5281/zenodo.18233335}
+}
+```
+
 ## License
 
-MIT License. SpecDeepMap components retain original license (see `downstream/specdeepmap/LICENSE_specdeepmap.md`).
+MIT License. SpecDeepMap components retain their original license (see `downstream/specdeepmap/LICENSE_specdeepmap.md`).
