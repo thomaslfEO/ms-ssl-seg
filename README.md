@@ -27,12 +27,12 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
 <!-- TODO: Update Zenodo link when available -->
 Download from Zenodo (available upon publication):
 
-| File | Method | Arch | Epochs | Use |
-|------|--------|------|--------|-----|
-| `mae_vit_small_399ep.pth` | MAE | ViT-Small | 399 | DPT decoder |
-| `mae_vit_base_399ep.pth` | MAE | ViT-Base | 399 | DPT decoder |
-| `moco_v3_swin_s3.ckpt` | MoCo v3 | Swin-Tiny | 79 | U-Net/DeepLabV3+ |
-| `moco_v3_vit_small_199ep.ckpt` | MoCo v3 | ViT-Small | 199 | DPT decoder |
+| File | Method | Architecture | Downstream Use |
+|------|--------|--------------|----------------|
+| `mae_vit_small_399ep.pth` | MAE | ViT-Small | DPT decoder |
+| `mae_vit_base_399ep.pth` | MAE | ViT-Base | DPT decoder |
+| `moco_v3_swin_s3.ckpt` | MoCo v3 | Swin-Tiny | U-Net |
+| `moco_v3_vit_small_199ep.ckpt` | MoCo v3 | ViT-Small | DPT decoder |
 
 Configure paths via environment variables or `configs/paths.local.yaml`:
 
