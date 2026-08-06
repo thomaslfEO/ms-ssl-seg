@@ -40,7 +40,7 @@ from util.misc import NativeScalerWithGradNormCount as NativeScaler
 
 import models_mae_mod_imagenet_init as models_mae
 
-from engine_pretrain import train_one_epoch
+from engine_pretrain import train_one_epoch, validate_one_epoch
 
 
 import random
@@ -281,6 +281,28 @@ def main(args):
         pin_memory=args.pin_mem,
         drop_last=True,
     )
+    
+    # Optional validation dataset
+    data_loader_val = None
+    if args.val_data_path and os.path.exists(args.val_data_path):
+        dataset_val = MultiSpectralChipDataset(
+            root=args.val_data_path,
+            crop_size=448,
+            input_size=args.input_size,
+            mean=[0.153467, 0.141859, 0.309777, 0.363888],
+            std=[0.104461, 0.131514, 0.147038, 0.17462]
+        )
+        print(f"Validation dataset: {dataset_val}")
+        print(f"Validation size: {len(dataset_val)}")
+        
+        data_loader_val = torch.utils.data.DataLoader(
+            dataset_val,
+            batch_size=args.batch_size,
+            num_workers=args.num_workers,
+            pin_memory=args.pin_mem,
+            drop_last=False,
+            shuffle=False,
+        )
 
     # define the model - use 4 channels for multispectral (G, R, RE, NIR)
     # Optionally initialize from ImageNet if --init_from_imagenet is set
@@ -347,19 +369,39 @@ def main(args):
             log_writer=log_writer,
             args=args
         )
-        if args.output_dir and (epoch % 5 == 0 or epoch + 1 == args.epochs):
+        
+        # Run validation if validation data is provided
+        val_stats = {}
+        if data_loader_val is not None:
+            val_stats = validate_one_epoch(
+                model, data_loader_val,
+                device, epoch,
+                log_writer=log_writer,
+                args=args
+            )
+        
+        if args.output_dir and (epoch % 10 == 0 or epoch + 1 == args.epochs):
             misc.save_model(
                 args=args, model=model, model_without_ddp=model_without_ddp, optimizer=optimizer,
                 loss_scaler=loss_scaler, epoch=epoch)
 
         log_stats = {**{f'train_{k}': v for k, v in train_stats.items()},
-                        'epoch': epoch,}
+                     **{f'val_{k}': v for k, v in val_stats.items()},
+                     'epoch': epoch,}
 
         if args.output_dir:
             if log_writer is not None:
                 log_writer.flush()
             with open(os.path.join(args.output_dir, "log.txt"), mode="a", encoding="utf-8") as f:
                 f.write(json.dumps(log_stats) + "\n")
+        
+        # Print epoch summary
+        train_loss = train_stats.get('loss', 0.0)
+        val_loss = val_stats.get('loss', 0.0) if val_stats else None
+        if val_loss is not None:
+            print(f"Epoch {epoch}: Train Loss = {train_loss:.4f}, Val Loss = {val_loss:.4f}")
+        else:
+            print(f"Epoch {epoch}: Train Loss = {train_loss:.4f}")
 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
@@ -378,6 +420,11 @@ if __name__ == '__main__':
     args = args.parse_args()
     if not args.data_path:
         args.data_path = str(ssl_pretrain_data() / "train" / "all")
+    if not args.val_data_path:
+        # Auto-detect validation data in sibling val/ folder
+        val_path = ssl_pretrain_data() / "val" / "all"
+        if val_path.exists():
+            args.val_data_path = str(val_path)
     if not args.output_dir:
         args.output_dir = str(ssl_output_dir() / "mae_vit_small")
     if not args.log_dir:
